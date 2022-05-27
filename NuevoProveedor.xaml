@@ -1,0 +1,155 @@
+﻿<Window x:Class="Libreria.NuevoProveedor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Libreria"
+        mc:Ignorable="d"
+        Title="Nuevo Proveedor" Height="550" Width="680"
+        Icon="Recursos\Libros.ico"
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="Beige">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Label Content="Nuevo proveedor" HorizontalAlignment="Left" Margin="10,5,5,5" VerticalAlignment="Top" FontSize="20" 
+                   FontStyle="Italic" FontWeight="DemiBold"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="135"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Nombre:" HorizontalAlignment="Left" Margin="10,0,10,0" VerticalAlignment="Top" FontSize="18"/>
+            <TextBox Name="textNombre" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="0,6,10,7" TextWrapping="Wrap" Text="" 
+                     VerticalAlignment="Center" Width="527" FontWeight="SemiBold" HorizontalContentAlignment="Left"
+                         VerticalContentAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="135"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Razón social:" HorizontalAlignment="Left" Margin="10,04,0,0" FontSize="18"/>
+            <TextBox Name="textRazonSocial" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="0,6,10,7" TextWrapping="Wrap" Text="" 
+                     VerticalAlignment="Center" Width="527" FontWeight="SemiBold" HorizontalContentAlignment="Left"
+                         VerticalContentAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="135"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Dirección:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="18"/>
+            <TextBox Name="textDireccion" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="0,6,10,7" TextWrapping="Wrap" Text="" 
+                     VerticalAlignment="Center" Width="527" FontWeight="SemiBold" HorizontalContentAlignment="Left"
+                         VerticalContentAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="135"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Código postal:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="18"/>
+            <TextBox Name="textCodPostal" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="0,6,10,7" TextWrapping="Wrap" Text="" 
+                     VerticalAlignment="Center" Width="527" FontWeight="SemiBold" HorizontalContentAlignment="Left"
+                         VerticalContentAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="135"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Teléfono:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="18"/>
+            <TextBox Name="textTelefono" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="0,6,10,7" TextWrapping="Wrap" Text="" 
+                     VerticalAlignment="Center" Width="527" FontWeight="SemiBold" HorizontalContentAlignment="Left"
+                         VerticalContentAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="135"></ColumnDefinition>
+                 <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Email:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="18"/>
+            <TextBox Name="textEmail" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="0,6,10,7" TextWrapping="Wrap" Text="" 
+                     VerticalAlignment="Center" Width="527" FontWeight="SemiBold" HorizontalContentAlignment="Left"
+                         VerticalContentAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="135"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Label Content="Editorial:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="18"/>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <TextBox Name="textEditorial" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="0,6,10,7" TextWrapping="Wrap" Text="" 
+                     VerticalAlignment="Center" Width="350" FontWeight="SemiBold" HorizontalContentAlignment="Left"
+                         VerticalContentAlignment="Center"/>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <Button Content="Agregar" VerticalAlignment="Center" HorizontalAlignment="Center" Width="62" FontSize="15" FontStyle="Italic" 
+                    BorderThickness="2" Click="Agregar_Click" Margin="5"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="135"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <ListView Name="listaEditoriales" Margin="0,5,10,0" ItemsSource="{Binding}" FontSize="16">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Editorial" DisplayMemberBinding="{Binding Path=Editorial}" Width="527"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </Grid>
+
+
+        <Grid Grid.Row="9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Button Content="Guardar" VerticalAlignment="Center" HorizontalAlignment="Center" Width="78" FontSize="18" FontStyle="Italic" 
+                    BorderThickness="2" Click="Guardar_Click" Margin="5"/>
+            </Grid>
+
+            <Grid Grid.Column="3">
+                <Button Content="Cancelar" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Width="78" FontSize="18" 
+                    FontStyle="Italic" BorderThickness="2" Click="Cerrar_Click"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

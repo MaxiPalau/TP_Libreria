@@ -1,0 +1,106 @@
+﻿<Window x:Class="Libreria.Editoriales"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Libreria"
+        mc:Ignorable="d"
+        Title="Editoriales" Height="450" Width="500"
+        Icon="Recursos\Libros.ico"
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="Beige">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Label Name="Titulo" Content="Editoriales" HorizontalAlignment="Left" Margin="10,5,5,5" VerticalAlignment="Top" FontSize="20" 
+                   FontStyle="Italic" FontWeight="DemiBold"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <ListView Name="listaEditoriales" Margin="15" ItemsSource="{Binding}" FontSize="16">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Editorial}" Width="462"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="15,0,15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Button Name="botonPrimero" Margin="5,5,0,5" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" 
+                                VerticalAlignment="Center" Width="35" Height="30" Click="botonPrimero_Click">
+                    <DockPanel>
+                        <Image Source="Recursos\first.png" Margin="0" Stretch="Fill"  Width="41" Height="45" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"></Image>
+                    </DockPanel>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Button Name="botonAnterior" Margin="0,5,5,5" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" Width="35" Height="30" Click="botonAnterior_Click">
+                    <DockPanel>
+                        <Image Source="Recursos\previous.png" Margin="0" Stretch="Fill" Width="41" Height="45" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"></Image>
+                    </DockPanel>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <Label Name="etiquetaNumPag" Content="" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" 
+                               FontSize="18" Height="30" Width="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0"/>
+
+            </Grid>
+
+            <Grid Grid.Column="3">
+                <Button Name="botonSiguiente" Margin="5,5,0,5" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" 
+                                VerticalAlignment="Center" Width="35" Height="30" Click="botonSiguiente_Click">
+                    <DockPanel>
+                        <Image Source="Recursos\next.png" Margin="0" Stretch="Fill" Width="41" Height="45" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"></Image>
+                    </DockPanel>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="4">
+                <Button Name="botonUltimo" Margin="0,5,5,5" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" 
+                                VerticalAlignment="Center" Width="35" Height="30" Click="botonUltimo_Click">
+                    <DockPanel>
+                        <Image Source="Recursos\last.png" Margin="0" Stretch="Fill" Width="41" Height="45" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"></Image>
+                    </DockPanel>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="5">
+                <Label Name="etiquetaInfoPaginacion" Content="" HorizontalAlignment="Center" Margin="0,5,0,5" VerticalAlignment="Center" 
+                               Height="25" Width="150" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0"/>
+            </Grid>
+
+
+            <Grid Grid.Column="6">
+                <Button Content="Cerrar" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Width="75" Height="25" FontSize="16" 
+                    FontStyle="Italic" Click="Cerrar_Click"/>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>

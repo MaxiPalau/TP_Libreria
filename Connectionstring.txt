@@ -1,0 +1,86 @@
+BD_Practica_2ConnectionString
+
+
+"SELECT l.Id, l.Titulo, a.Autor, e.Editorial, l.ISBN, l.Edicion, l.Anio, l.Paginas, c.Categoria, l.Precio, l.Stock FROM Libro l " +
+                    "INNER JOIN Autores a " +
+                    "ON l.IdAutor = a.Id " +
+                    "INNER JOIN Editoriales e " +
+                    "ON l.IdEditorial = e.Id  " +
+                    "INNER JOIN Categorias c " +
+                    "ON l.IdCategoria = c.Id " +
+                    "WHERE a." + columna  + " LIKE '" + parametroBusqueda.Text + "'";
+
+
+
+USE [Practica_2]
+GO
+SET IDENTITY_INSERT [dbo].[Autores] ON 
+GO
+INSERT [dbo].[Autores] ([Id], [Autor]) VALUES (1, N'Stephen King')
+GO
+INSERT [dbo].[Autores] ([Id], [Autor]) VALUES (2, N'Rick Riordan')
+GO
+INSERT [dbo].[Autores] ([Id], [Autor]) VALUES (3, N'Andrzej Sapkowski')
+GO
+SET IDENTITY_INSERT [dbo].[Autores] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Categorias] ON 
+GO
+INSERT [dbo].[Categorias] ([Id], [Categoria]) VALUES (1, N'Fantasía')
+GO
+INSERT [dbo].[Categorias] ([Id], [Categoria]) VALUES (2, N'Terror')
+GO
+INSERT [dbo].[Categorias] ([Id], [Categoria]) VALUES (3, N'Ciencia Ficción')
+GO
+INSERT [dbo].[Categorias] ([Id], [Categoria]) VALUES (4, N'Novela')
+GO
+INSERT [dbo].[Categorias] ([Id], [Categoria]) VALUES (5, N'Ficción')
+GO
+SET IDENTITY_INSERT [dbo].[Categorias] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Editoriales] ON 
+GO
+INSERT [dbo].[Editoriales] ([Id], [Editorial]) VALUES (1, N'Debolsillo')
+GO
+INSERT [dbo].[Editoriales] ([Id], [Editorial]) VALUES (2, N'Plaza y Janes')
+GO
+INSERT [dbo].[Editoriales] ([Id], [Editorial]) VALUES (3, N'Salamandra')
+GO
+INSERT [dbo].[Editoriales] ([Id], [Editorial]) VALUES (4, N'Artifex')
+GO
+INSERT [dbo].[Editoriales] ([Id], [Editorial]) VALUES (5, N'Alamut')
+GO
+SET IDENTITY_INSERT [dbo].[Editoriales] OFF
+GO
+
+
+
+
+
+
+SELECT l.Id, l.Titulo, a.Autor, e.Editorial, l.ISBN, l.Edicion, l.Anio, l.Paginas, c.Categoria, l.Precio, l.Stock FROM Libro l
+INNER JOIN Autores a
+ON l.IdAutor = a.Id
+INNER JOIN Editoriales e
+ON l.IdEditorial = e.Id
+INNER JOIN Categorias c
+ON l.IdCategoria = c.Id
+WHERE a.Autor LIKE 'King';
+
+
+
+
+
+
+INSERT INTO Libro as l (l.Titulo, l.IdAutor , l.IdEditorial, l.ISBN, l.Edicion, l.Anio, l.Paginas, l.IdCategoria," +
+                " l.Precio, l.Stock) VALUES (@Titulo, (SELECT Id FROM Autores WHERE Autor = @Autor), " +
+                "(SELECT Id FROM Editoriales WHERE Editorial = @Editorial), @ISBN, @Edicion, @Anio, @Paginas, " +
+                "(SELECT Id From Categorias WHERE Categoria = @Categoria), + @Precio, @Stock))
+
+UPDATE Libro SET Titulo='11', IdAutor=(SELECT Id from Autores WHERE Autor like 'Stephen King'), 
+IdEditorial=(SELECT Id from Editoriales WHERE Editorial like 'Salamandra'), ISBN='6510', Edicion='1', Anio=1998, Paginas=22, 
+IdCategoria =(SELECT Id from Categorias WHERE Categoria like 'Novela'), Precio=12.25, Stock=8 WHERE Id=32;
+
+"UPDATE Proveedores SET Nombre=@nombre, Razon_Social=@razonSocial, Direccion=@direccion, Codigo_Postal=@codPostal, " +
+                "Telefono=@telefono, Email=@email WHERE Id=@IdProveedor";
+

@@ -1,0 +1,173 @@
+﻿<Window x:Class="Libreria.BuscaLibro1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Libreria"
+        mc:Ignorable="d"
+        Title="Buscar Libro" Height="600" Width="1200"
+        Icon="Recursos\Libros.ico"
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="Beige">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Label Name="Titulo" Content="Búsqueda de libro" HorizontalAlignment="Left" Margin="10,5,5,5" VerticalAlignment="Top" FontSize="20" 
+                   FontStyle="Italic" FontWeight="DemiBold"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Label Content="Búsqueda por:" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" FontSize="16" 
+                       FontStyle="Italic" FontWeight="DemiBold"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <ComboBox Name="listaBusqueda" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" Width="100" 
+                              SelectionChanged="listaBusqueda_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding NombreBusqueda}" FontSize="16" FontStyle="Italic"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBox Name="parametroBusqueda" HorizontalAlignment="Left" Height="23" Margin="5" TextWrapping="Wrap" 
+                             Text="Ingrese el dato a buscar" VerticalAlignment="Center" Width="420" 
+                             MouseDoubleClick="parametroBusqueda_MouseDoubleClick" />
+            </Grid>
+            <Grid Grid.Column="3">
+                <Button Content="Buscar" Grid.Column="2" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Center" Width="75" 
+                        FontSize="16" FontStyle="Italic" Click="Buscar_Click"/>
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <ListView Name="listaLibros" Margin="15,15,15,5" ItemsSource="{Binding}" FontSize="16" SelectionChanged="listaLibros_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Código" DisplayMemberBinding="{Binding Path=Id}"></GridViewColumn>
+                        <GridViewColumn Header="Titulo" DisplayMemberBinding="{Binding Path= Titulo}" Width="Auto"></GridViewColumn>
+                        <GridViewColumn Header="Autor" DisplayMemberBinding="{Binding Path= Autor}"></GridViewColumn>
+                        <GridViewColumn Header="Editorial" DisplayMemberBinding="{Binding Path= Editorial}"></GridViewColumn>
+                        <GridViewColumn Header="ISBN" DisplayMemberBinding="{Binding Path= ISBN}"></GridViewColumn>
+                        <GridViewColumn Header="Edición" DisplayMemberBinding="{Binding Path= Edicion}"></GridViewColumn>
+                        <GridViewColumn Header="Año" DisplayMemberBinding="{Binding Path= Anio}"></GridViewColumn>
+                        <GridViewColumn Header="Páginas" DisplayMemberBinding="{Binding Path= Paginas}"></GridViewColumn>
+                        <GridViewColumn Header="Categoría" DisplayMemberBinding="{Binding Path= Categoria}"></GridViewColumn>
+                        <GridViewColumn Header="Precio" DisplayMemberBinding="{Binding Path= Precio}" ></GridViewColumn>
+                        <GridViewColumn Header="Stock" DisplayMemberBinding="{Binding Path= Stock}"  ></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="15,0,15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <!--<Button Name="botonPrimero" Content="Primero" HorizontalAlignment="Left" Margin="10,10,10,10" VerticalAlignment="Top" Width="75" 
+                    FontStyle="Italic" FontSize="16" Click="botonPrimero_Click"/>-->
+                <Button Name="botonPrimero" HorizontalAlignment="Left" Margin="5,5,0,5" Background="Transparent" BorderBrush="Transparent" 
+                        VerticalAlignment="Center" Width="35" Height="30" Click="botonPrimero_Click">
+                    <DockPanel>
+                        <Image Source="Recursos\first.png" Margin="0" Stretch="Fill"  Width="41" Height="45" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"></Image>
+                    </DockPanel>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <!--<Button Name="botonAnterior" Content="Anterior" HorizontalAlignment="Left" Margin="10,10,10,10" VerticalAlignment="Top" Width="75" 
+                    FontStyle="Italic" FontSize="16" Click="botonAnterior_Click"/>-->
+                <Button Name="botonAnterior" Margin="0,5,5,5" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" Width="35" Height="30" Click="botonAnterior_Click">
+                    <DockPanel>
+                        <Image Source="Recursos\previous.png" Margin="0" Stretch="Fill" Width="41" Height="45" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"></Image>
+                    </DockPanel>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="3">
+                <!--<Label Name="etiquetaNumPag" Content="" HorizontalAlignment="Left" Margin="10,10,10,10" VerticalAlignment="Top" FontSize="18" 
+                       Height="25" Width="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0"/>-->
+                <Label Name="etiquetaNumPag" Content="" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" 
+                               FontSize="18" Height="30" Width="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0"/>
+
+            </Grid>
+
+            <Grid Grid.Column="4">
+                <!--<Button Name="botonSiguiente" Content="Siguiente" HorizontalAlignment="Left" Margin="10,10,10,10" VerticalAlignment="Top" Width="75" 
+                    FontStyle="Italic" FontSize="16" Click="botonSiguiente_Click"/>-->
+                <Button Name="botonSiguiente" Margin="5,5,0,5" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" 
+                                VerticalAlignment="Center" Width="35" Height="30" Click="botonSiguiente_Click">
+                    <DockPanel>
+                        <Image Source="Recursos\next.png" Margin="0" Stretch="Fill" Width="41" Height="45" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"></Image>
+                    </DockPanel>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="5">
+                <!--<Button Name="botonUltimo" Content="Ultimo" HorizontalAlignment="Left" Margin="10,10,10,10" VerticalAlignment="Top" Width="75" 
+                    FontStyle="Italic" FontSize="16" Click="botonUltimo_Click"/>-->
+                <Button Name="botonUltimo" Margin="0,5,5,5" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Left" 
+                                VerticalAlignment="Center" Width="35" Height="30" Click="botonUltimo_Click">
+                    <DockPanel>
+                        <Image Source="Recursos\last.png" Margin="0" Stretch="Fill" Width="41" Height="45" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Center"></Image>
+                    </DockPanel>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="6">
+                <!--<Label Name="etiquetaInfoPaginacion" Content="" HorizontalAlignment="Left" Margin="10,10,10,10" VerticalAlignment="Top" Height="25" 
+                   Width="250" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="0"/>-->
+                <Label Name="etiquetaInfoPaginacion" Content="" HorizontalAlignment="Center" Margin="0,5,0,5" VerticalAlignment="Center" 
+                       Height="25" Width="150" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0"/>
+            </Grid>
+
+            <Grid Grid.Column="8">
+                <Button Name="botonModificar" Content="Modificar" HorizontalAlignment="Left" Margin="10,10,10,10" VerticalAlignment="Top" Width="75" 
+                    Height="25" FontSize="16" FontStyle="Italic" Click="Modificar_Click" Visibility="Hidden" IsEnabled="False"/>
+                <Button Name="botonBorrar" Content="Borrar" HorizontalAlignment="Left" Margin="10,10,10,10" VerticalAlignment="Top" Width="75"
+                        Height="25" FontSize="16" FontStyle="Italic" Click="Borrar_Click" Visibility="Hidden" IsEnabled="False"/>
+            </Grid>
+
+            <Grid Grid.Column="9">
+                <Button Content="Cerrar" HorizontalAlignment="Left" Margin="10,10,10,10" VerticalAlignment="Top" Width="75" Height="25" FontSize="16" 
+                    FontStyle="Italic" Click="Cerrar_Click"/>
+            </Grid>
+        </Grid>
+
+
+    </Grid>
+</Window>

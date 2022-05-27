@@ -1,0 +1,200 @@
+USE [Practica_2]
+GO
+ALTER TABLE [dbo].[Libro] DROP CONSTRAINT [FK_Libro_Editoriales]
+GO
+ALTER TABLE [dbo].[Libro] DROP CONSTRAINT [FK_Libro_Categorias]
+GO
+ALTER TABLE [dbo].[Libro] DROP CONSTRAINT [FK_Libro_Autores]
+GO
+/****** Object:  Table [dbo].[Libro]    Script Date: 3/11/2021 09:58:07 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Libro]') AND type in (N'U'))
+DROP TABLE [dbo].[Libro]
+GO
+/****** Object:  Table [dbo].[Editoriales]    Script Date: 3/11/2021 09:58:07 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Editoriales]') AND type in (N'U'))
+DROP TABLE [dbo].[Editoriales]
+GO
+/****** Object:  Table [dbo].[Categorias]    Script Date: 3/11/2021 09:58:07 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Categorias]') AND type in (N'U'))
+DROP TABLE [dbo].[Categorias]
+GO
+/****** Object:  Table [dbo].[Autores]    Script Date: 3/11/2021 09:58:07 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Autores]') AND type in (N'U'))
+DROP TABLE [dbo].[Autores]
+GO
+/****** Object:  Table [dbo].[Autores]    Script Date: 3/11/2021 09:58:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Autores](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Autor] [varchar](50) NULL,
+ CONSTRAINT [PK_Autores] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Categorias]    Script Date: 3/11/2021 09:58:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Categorias](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Categoria] [varchar](50) NULL,
+ CONSTRAINT [PK_Categorias] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Editoriales]    Script Date: 3/11/2021 09:58:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Editoriales](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Editorial] [varchar](50) NULL,
+ CONSTRAINT [PK_Editoriales] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Libro]    Script Date: 3/11/2021 09:58:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Libro](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Titulo] [varchar](50) NULL,
+	[IdAutor] [int] NULL,
+	[IdEditorial] [int] NULL,
+	[ISBN] [varchar](20) NULL,
+	[Edicion] [varchar](50) NULL,
+	[Anio] [int] NULL,
+	[Paginas] [int] NULL,
+	[IdCategoria] [int] NULL,
+	[Precio] [money] NULL,
+	[Stock] [int] NULL,
+ CONSTRAINT [PK_Libro] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Autores] ON 
+GO
+INSERT [dbo].[Autores] ([Id], [Autor]) VALUES (1, N'Stephen King')
+GO
+INSERT [dbo].[Autores] ([Id], [Autor]) VALUES (2, N'Rick Riordan')
+GO
+INSERT [dbo].[Autores] ([Id], [Autor]) VALUES (3, N'Andrzej Sapkowski')
+GO
+SET IDENTITY_INSERT [dbo].[Autores] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Categorias] ON 
+GO
+INSERT [dbo].[Categorias] ([Id], [Categoria]) VALUES (1, N'Fantasía')
+GO
+INSERT [dbo].[Categorias] ([Id], [Categoria]) VALUES (2, N'Terror')
+GO
+INSERT [dbo].[Categorias] ([Id], [Categoria]) VALUES (3, N'Ciencia Ficción')
+GO
+INSERT [dbo].[Categorias] ([Id], [Categoria]) VALUES (4, N'Novela')
+GO
+INSERT [dbo].[Categorias] ([Id], [Categoria]) VALUES (5, N'Ficción')
+GO
+SET IDENTITY_INSERT [dbo].[Categorias] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Editoriales] ON 
+GO
+INSERT [dbo].[Editoriales] ([Id], [Editorial]) VALUES (1, N'Debolsillo')
+GO
+INSERT [dbo].[Editoriales] ([Id], [Editorial]) VALUES (2, N'Plaza y Janes')
+GO
+INSERT [dbo].[Editoriales] ([Id], [Editorial]) VALUES (3, N'Salamandra')
+GO
+INSERT [dbo].[Editoriales] ([Id], [Editorial]) VALUES (4, N'Artifex')
+GO
+INSERT [dbo].[Editoriales] ([Id], [Editorial]) VALUES (5, N'Alamut')
+GO
+SET IDENTITY_INSERT [dbo].[Editoriales] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Libro] ON 
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (1, N'IT', 1, 1, N'9789877250244', N'2', 2015, 1504, 2, 3749.0000, 10)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (2, N'Cementerio de animales', 1, 1, N'9789500731652', N'1', 2010, 488, 2, 3149.0000, 5)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (3, N'La Llegada de Los Tres La Torre Oscura', 1, 2, N'9788401336478', N'1', 2007, 544, 3, 4500.0000, 1)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (4, N'El Viento Por la Cerradura', 1, 2, N'9789506442637', N'1', 2012, 368, 3, 7161.0000, 3)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (5, N'Percy Jackson El Ladron del Rayo', 2, 3, N'9788498386264', N'1', 2014, 288, 1, 3517.0000, 4)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (6, N'Percy Jackson El Mar de Los Monstruos', 2, 3, N'9789878000206', N'1', 2020, 256, 1, 1999.0000, 8)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (7, N'Percy Jackson La Maldicion del Titan', 2, 3, N'9786073192408', N'1', 2020, 288, 1, 3989.0000, 15)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (8, N'Percy Jackson La Batalla del Laberinto', 2, 3, N'9788498386295', N'1', 2015, 320, 1, 3391.0000, 7)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (9, N'Percy Jackson El Ultimo Heroe del Olimpo', 2, 3, N'9788498386301', N'1', 2015, 352, 1, 2819.0000, 20)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (10, N'El Ultimo Deseo', 3, 4, N'9788498891041', N'1', 2015, 264, 5, 3703.0000, 4)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (11, N'La Espada del Destino', 3, 4, N'9788498891058', N'1', 2018, 288, 5, 1895.0000, 6)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (12, N'Estacion de Tormentas', 3, 5, N'9788498891027', N'1', 2015, 312, 5, 6308.0000, 3)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (13, N'La Sangre de Los Elfos', 3, 4, N'978498891065', N'1', 2018, 264, 5, 3300.0000, 5)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (14, N'Tiempo de Odio', 3, 4, N'9788498891072', N'1', 2016, 288, 5, 2095.0000, 9)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (15, N'Bautismo de Fuego', 3, 5, N'9788498890549', N'1', 2010, 256, 5, 6191.0000, 3)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (16, N'La Torre de La Golondrina', 3, 5, N'9788498890570', N'1', 2012, 336, 5, 6423.0000, 4)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (17, N'La Dama del Lago', 3, 4, N'9788498891102', N'1', 2016, 480, 5, 2650.0000, 11)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (18, N'1', 1, 3, N'1', N'1', 1999, 25, 2, 15.0000, 5)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (19, N'2', 1, 3, N'321', N'651', 15556, 2, 2, 15.0000, 5)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (20, N'5', 1, 3, N'1', N'1', 1999, 25, 2, 15.5000, 5)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (22, N'sarasa', 1, 1, N'5156', N'5', 123, 5, 2, 65.5000, 5)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (23, N'lalala', 1, 3, N'654', N'1', 1, 51, NULL, 52.5200, 5)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (24, N'6', 1, 3, N'1', N'1', 1999, NULL, 2, 15.5000, 5)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (25, N'pinpon', 1, 3, N'651321', N'1', 564, 5, 2, 12.2500, 5)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (26, N'15646', 1, 3, N'', N'2', 95, 0, 2, 58.2000, 2)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (31, N'pepe', 1, 3, N'3203216', N'1', 1999, 5, 2, 55.2500, 2)
+GO
+INSERT [dbo].[Libro] ([Id], [Titulo], [IdAutor], [IdEditorial], [ISBN], [Edicion], [Anio], [Paginas], [IdCategoria], [Precio], [Stock]) VALUES (32, N'10', 1, 2, N'6510', N'15', 1568, 5, 2, 25.2000, 5)
+GO
+SET IDENTITY_INSERT [dbo].[Libro] OFF
+GO
+ALTER TABLE [dbo].[Libro]  WITH CHECK ADD  CONSTRAINT [FK_Libro_Autores] FOREIGN KEY([IdAutor])
+REFERENCES [dbo].[Autores] ([Id])
+GO
+ALTER TABLE [dbo].[Libro] CHECK CONSTRAINT [FK_Libro_Autores]
+GO
+ALTER TABLE [dbo].[Libro]  WITH CHECK ADD  CONSTRAINT [FK_Libro_Categorias] FOREIGN KEY([IdCategoria])
+REFERENCES [dbo].[Categorias] ([Id])
+GO
+ALTER TABLE [dbo].[Libro] CHECK CONSTRAINT [FK_Libro_Categorias]
+GO
+ALTER TABLE [dbo].[Libro]  WITH CHECK ADD  CONSTRAINT [FK_Libro_Editoriales] FOREIGN KEY([IdEditorial])
+REFERENCES [dbo].[Editoriales] ([Id])
+GO
+ALTER TABLE [dbo].[Libro] CHECK CONSTRAINT [FK_Libro_Editoriales]
+GO
